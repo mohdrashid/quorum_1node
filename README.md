@@ -1,8 +1,10 @@
 # Quorum 1 Node setup
 
 ## 1. Installation of Quorum
-1. Change username and versions as per requirement in setup.sh. Make sure to change username field to that of current user in linux.
-2. Run `sudo ./setup.sh` . This will install the everything related to quorum.
+1. Clone the repository by typing `git clone https://github.com/mohdrashid/quorum_1node.git`
+2. Every instruction beyond this assumes that you are in the cloned repository directory. i.e. Type  `cd quorum_1node`
+3. Change username and versions as per requirement in setup.sh. Make sure to change username field to that of current user in linux.
+4. Run `sudo ./setup.sh` . This will install the everything related to quorum.
 
 ## 2. Setting up Quorum
 1. Update nodekey located in nodekey folder, to differentiate nodes.
