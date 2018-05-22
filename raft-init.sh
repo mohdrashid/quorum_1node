@@ -1,7 +1,7 @@
 #!/bin/bash
 set -u
 set -e
-user="username"
+username="username"
 
 echo "[*] Cleaning up temporary data directories"
 rm -rf data
@@ -10,7 +10,7 @@ mkdir -p data/logs
 echo "Setting up Constellation keys"
 cd keys
 constellation-node --generatekeys=node
-sudo chown $user:$user node.*
+sudo chown $username:$username node.*
 cd ..
 
 echo "[*] Configuring node (permissioned)"
