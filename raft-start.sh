@@ -13,7 +13,7 @@ echo "[*] Starting Ethereum nodes"
 set -v
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0"
 ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints"
-PRIVATE_CONFIG=./data/constellation/tm.ipc nohup geth --datadir data $ARGS  $WEBSOCKET_ARGS --wsorigins "*" --wsport 8546 --permissioned --raftport 50401 --rpcport 22000 --port 21000 --unlock 0 --password passwords.txt 2>>data/logs/quorum.log &
+PRIVATE_CONFIG=./data/constellation/tm.ipc nohup geth --datadir data $ARGS  $WEBSOCKET_ARGS --wsorigins "*" --wsport 8546 --permissioned --raftport 50401 --rpcport 22000 --port 21000 2>>data/logs/quorum.log &
 set +v
 
 echo
