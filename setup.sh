@@ -35,9 +35,6 @@ popd >/dev/null
 
 # done!
 banner "Quorum"
-echo
-echo 'The Quorum vagrant instance has been provisioned. Examples are available in ~/quorum-examples inside the instance.'
-echo "Use 'vagrant ssh' to open a terminal, 'vagrant suspend' to stop the instance, and 'vagrant destroy' to remove it."
 
 rm *.xz
 rm quorum
