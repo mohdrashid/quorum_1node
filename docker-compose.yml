@@ -1,0 +1,11 @@
+version: '3'
+services:
+  quorum:
+    build: .
+    ports:
+     - "21000:21000"
+     - "8545:8545"
+     - "50401:50401"
+     - "8546:8546"
+    volumes:
+     - /home/xxx/quorum_1node/data:/quorum/data

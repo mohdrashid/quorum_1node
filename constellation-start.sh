@@ -1,7 +1,7 @@
 #!/bin/bash
 set -u
 set -e
-othernode="http://10.0.0.4:9001/"
+othernode="http://127.0.0.1:9001/"
 DDIR="data/constellation"
 
 mkdir -p $DDIR
