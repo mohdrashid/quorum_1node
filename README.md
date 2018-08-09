@@ -20,3 +20,6 @@ Type `docker-compose up` to bring up the image and start the quorum node
 
 ## 6. Interacting with node
 You can easily interact with the node by typing `geth attach PATH_TO_DATA/dd1/geth.ipc` this will bring up the console. This step will require you to install geth. In ubuntu this can be done by typing `sudo apt-get install geth`
+
+# Regarding your keys
+Your constellation public ID can be obtained from data directory in constellation/node.pub file. This will be used by others to send you private transaction. Ethereum accounts can be added from geth using standard geth commands.
