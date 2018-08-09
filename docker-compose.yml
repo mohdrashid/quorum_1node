@@ -6,11 +6,12 @@ services:
      - LOG_DIR=logs
      - CONSTELLATION_PORT=9001
      - CONSTELLATION_ADDRESS=http://127.0.0.1:9001/
-     - OTHER_CONSTELLATION_NODES=http://127.0.0.1:9001/
+     - OTHER_CONSTELLATION_NODES=http://127.0.0.1:9002/
      - RPC_PORT=8545
      - WS_PORT=8546
      - RAFT_PORT=50401
      - GETH_PORT=21000
+     - NODE_KEY=1be3b50b31734be48452c29d714941ba165ef0cbf3ccea8ca16c45e3d8d45fb0
     build: 
       context: .
       args:
@@ -18,11 +19,43 @@ services:
         - CREL=constellation-0.3.2-ubuntu1604
         - GOREL=go1.9.3.linux-amd64.tar.gz
         - QVER=v2.0.2
+    network_mode: "host"
     ports:
      - "21000:21000"
      - "8545:8545"
      - "50401:50401"
      - "8546:8546"
+     - "9001:9001"
     volumes:
-     - /home/rashid/quorum_1node/data:/quorum/data
-     - /home/rashid/quorum_1node/logs:/quorum/logs
+     - /home/rashid/quorum_1node/data/d1:/quorum/data
+     - /home/rashid/quorum_1node/logs/l1:/quorum/logs
+  quorum2:
+    environment:
+     - DATA_DIR=data
+     - LOG_DIR=logs
+     - CONSTELLATION_PORT=9002
+     - CONSTELLATION_ADDRESS=http://127.0.0.1:9002/
+     - OTHER_CONSTELLATION_NODES=http://127.0.0.1:9001/
+     - RPC_PORT=8547
+     - WS_PORT=8548
+     - RAFT_PORT=50402
+     - GETH_PORT=21001
+     - NODE_KEY=9bdd6a2e7cc1ca4a4019029df3834d2633ea6e14034d6dcc3b944396fe13a08b
+    build: 
+      context: .
+      args:
+        - CVER=0.3.2
+        - CREL=constellation-0.3.2-ubuntu1604
+        - GOREL=go1.9.3.linux-amd64.tar.gz
+        - QVER=v2.0.2
+    network_mode: "host"
+    ports:
+     - "21001:21001"
+     - "8547:8547"
+     - "50402:50402"
+     - "8548:8548"
+     - "9002:9002"
+    volumes:
+     - /home/rashid/quorum_1node/data/d2:/quorum/data
+     - /home/rashid/quorum_1node/logs/l2:/quorum/logs
+  
