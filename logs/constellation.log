@@ -1,0 +1,4 @@
+11:51:53 [INFO] Log level is LevelWarn
+11:51:53 [WARN] node.key is too accessible. Please run: chmod 0600 node.key
+11:52:47 [INFO] Log level is LevelWarn
+11:52:47 [WARN] node.key is too accessible. Please run: chmod 0600 node.key

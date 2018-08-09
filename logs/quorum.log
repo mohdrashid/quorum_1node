@@ -1,0 +1,41 @@
+WARN [08-09|11:52:52] No etherbase set and no accounts found as default 
+INFO [08-09|11:52:52] Starting peer-to-peer node               instance=Geth/v1.7.2-stable-df4267a2/linux-amd64/go1.9.3
+INFO [08-09|11:52:52] Allocated cache and file handles         database=/quorum/data/geth/chaindata cache=128 handles=1024
+WARN [08-09|11:52:52] Upgrading database to use lookup entries 
+INFO [08-09|11:52:52] Database deduplication successful        deduped=0
+INFO [08-09|11:52:52] Initialised chain configuration          config="{ChainID: 1 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: <nil> EIP155: <nil> EIP158: <nil> Byzantium: <nil> IsQuorum: true Engine: unknown}"
+INFO [08-09|11:52:52] Disk storage enabled for ethash caches   dir=/quorum/data/geth/ethash count=3
+INFO [08-09|11:52:52] Disk storage enabled for ethash DAGs     dir=/root/.ethash            count=2
+INFO [08-09|11:52:52] Initialising Ethereum protocol           versions="[63 62]" network=1
+INFO [08-09|11:52:52] Loaded most recent local header          number=0 hash=c23b4e…8b1b71 td=0
+INFO [08-09|11:52:52] Loaded most recent local full block      number=0 hash=c23b4e…8b1b71 td=0
+INFO [08-09|11:52:52] Loaded most recent local fast block      number=0 hash=c23b4e…8b1b71 td=0
+INFO [08-09|11:52:52] Regenerated local transaction journal    transactions=0 accounts=0
+INFO [08-09|11:52:52] Starting P2P networking 
+INFO [08-09|11:52:54] UDP listener up                          self=enode://ac6b1096ca56b9f6d004b779ae3728bf83f8e22453404cc3cef16a3d9b96608bc67c4b30db88e0a5a6c6390213f7acbe1153ff6d23ce57380104288ae19373ef@[::]:21000
+INFO [08-09|11:52:54] RLPx listener up                         self=enode://ac6b1096ca56b9f6d004b779ae3728bf83f8e22453404cc3cef16a3d9b96608bc67c4b30db88e0a5a6c6390213f7acbe1153ff6d23ce57380104288ae19373ef@[::]:21000
+INFO [08-09|11:52:54] starting raft protocol handler 
+WARN [08-09|11:52:54] Removing static dial candidate           id=ac6b1096ca56b9f6 addr=127.0.0.1:21000 err="is self"
+INFO [08-09|11:52:54] loaded the latest applied index          lastAppliedIndex=0
+INFO [08-09|11:52:54] replaying WAL 
+INFO [08-09|11:52:55] loading WAL                              term=0 index=0
+INFO [08-09|11:52:55] startRaft                                raft ID=1
+INFO [08-09|11:52:55] starting a new raft log                  initial cluster size of=1
+raft2018/08/09 11:52:55 INFO: 1 became follower at term 0
+raft2018/08/09 11:52:55 INFO: newRaft 1 [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0]
+raft2018/08/09 11:52:55 INFO: 1 became follower at term 1
+INFO [08-09|11:52:55] IPC endpoint opened: /quorum/data/geth.ipc 
+INFO [08-09|11:52:55] HTTP endpoint opened: http://0.0.0.0:8545 
+INFO [08-09|11:52:55] WebSocket endpoint opened: ws://[::]:8546 
+INFO [08-09|11:52:55] WebSocket endpoint closed: ws://0.0.0.0:8546 
+INFO [08-09|11:52:55] HTTP endpoint closed: http://0.0.0.0:8545 
+INFO [08-09|11:52:55] IPC endpoint closed: /quorum/data/geth.ipc 
+INFO [08-09|11:52:55] Blockchain manager stopped 
+INFO [08-09|11:52:55] stopping raft protocol handler... 
+INFO [08-09|11:52:55] raft protocol handler stopped 
+INFO [08-09|11:52:55] Database closed                          database=/quorum/data/geth/chaindata
+INFO [08-09|11:52:55] Raft stopped 
+INFO [08-09|11:52:55] Stopping Ethereum protocol 
+INFO [08-09|11:52:55] Ethereum protocol stopped 
+INFO [08-09|11:52:55] Transaction pool stopped 
+ERROR[08-09|11:52:55] Failed to close database                 database=/quorum/data/geth/chaindata err="leveldb: closed"

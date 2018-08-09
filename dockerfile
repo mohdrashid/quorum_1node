@@ -1,3 +1,8 @@
+ARG CVER="0.3.2"
+ARG CREL="constellation-0.3.2-ubuntu1604"
+ARG GOREL="go1.9.3.linux-amd64.tar.gz"
+ARG QVER="v2.0.2"
+
 FROM ubuntu:16.04 as builder
 
 # install add repository
@@ -9,16 +14,15 @@ RUN add-apt-repository ppa:ethereum/ethereum &&\
     apt-get install -y build-essential wget unzip git libdb-dev libleveldb-dev libsodium-dev zlib1g-dev libtinfo-dev solc wrk
 
 # install constellation
-ARG CVER="0.3.2"
-ARG CREL="constellation-$CVER-ubuntu1604"
-
+ARG CVER
+ARG CREL
 RUN wget -q https://github.com/jpmorganchase/constellation/releases/download/v$CVER/$CREL.tar.xz && \
     tar xfJ $CREL.tar.xz && \
     cp $CREL/constellation-node /usr/local/bin && chmod 0755 /usr/local/bin/constellation-node && \
     rm -rf $CREL
 
 # install golang
-ARG GOREL="go1.9.3.linux-amd64.tar.gz"
+ARG GOREL
 RUN wget -q https://dl.google.com/go/$GOREL && \
     tar xfz $GOREL && \
     mv go /usr/local/go && \
@@ -27,7 +31,7 @@ RUN wget -q https://dl.google.com/go/$GOREL && \
 ENV PATH $PATH:/usr/local/go/bin
 
 # make/install quorum
-ARG QVER="v2.0.2"
+ARG QVER
 RUN git clone https://github.com/jpmorganchase/quorum.git && \
     cd quorum && \
     git checkout tags/$QVER && \
@@ -44,16 +48,15 @@ WORKDIR /quorum
 COPY . .
 
 #JSON RPC
-EXPOSE 8545
+EXPOSE ${RPC_PORT}
 #ETH
-EXPOSE 21000
+EXPOSE ${GETH_PORT}
 #RAFT
-EXPOSE 50401
+EXPOSE ${RAFT_PORT}
 #WS
-EXPOSE 8546
+EXPOSE ${WS_PORT}
 #Constellation
-EXPOSE 9001
-EXPOSE 9003
+EXPOSE ${CONSTELLATION_PORT}
 
 #RUN ./raft-init.sh
 

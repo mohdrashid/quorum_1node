@@ -1,26 +1,25 @@
 #!/bin/bash
 set -u
 set -e
-othernode="http://127.0.0.1:9001/"
-DDIR="data/constellation"
 
-mkdir -p $DDIR
-mkdir -p data/logs
+CONSTELLATION_DATA_DIR="$DATA_DIR/constellation"
+mkdir -p $CONSTELLATION_DATA_DIR
+mkdir -p $LOG_DIR
 
-cp "keys/node.pub" "$DDIR/node.pub"
-cp "keys/node.key" "$DDIR/node.key"
+cp "keys/node.pub" "$CONSTELLATION_DATA_DIR/node.pub"
+cp "keys/node.key" "$CONSTELLATION_DATA_DIR/node.key"
 
-rm -f "$DDIR/tm.ipc"
-CMD="constellation-node --url=$othernode --port=9001 --workdir=$DDIR --socket=tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$othernode --tls=off"
-echo "$CMD >> data/logs/constellation.log 2>&1 &"
-$CMD >> "data/logs/constellation.log" 2>&1 &
+rm -f "$CONSTELLATION_DATA_DIR/tm.ipc"
+CMD="constellation-node --url=$CONSTELLATION_ADDRESS --port=$CONSTELLATION_PORT --workdir=$CONSTELLATION_DATA_DIR --socket=tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$OTHER_CONSTELLATION_NODES --tls=off"
+echo "$CMD >> $LOG_DIR/constellation.log 2>&1 &"
+$CMD >> "$LOG_DIR/constellation.log" 2>&1 &
 
 DOWN=false
 
 while $DOWN; do
     sleep 0.1
     DOWN=false
-    if [ ! -S "data/constellation/tm.ipc" ]; then
+    if [ ! -S "$CONSTELLATION_DATA_DIR/tm.ipc" ]; then
         DOWN=true
     fi
 done
