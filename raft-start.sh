@@ -6,10 +6,11 @@ if [ -d "data/keystore" ]; then
     # Will enter here if $DIRECTORY exists, even if it contains spaces
     echo "Directory exists, Skipping initialization"
 else
+    echo "Initializing"
     ./initialization.sh
 fi
 
-sleep 5
+sleep 2
 
 mkdir -p $LOG_DIR
 echo "[*] Starting Constellation nodes"
