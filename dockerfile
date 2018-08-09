@@ -1,5 +1,4 @@
 ARG CVER="0.3.2"
-ARG CREL="constellation-0.3.2-ubuntu1604"
 ARG GOREL="go1.9.3.linux-amd64.tar.gz"
 ARG QVER="v2.0.2"
 
@@ -15,7 +14,8 @@ RUN add-apt-repository ppa:ethereum/ethereum &&\
 
 # install constellation
 ARG CVER
-ARG CREL
+ARG CREL="constellation-$CVER-ubuntu1604"
+
 RUN wget -q https://github.com/jpmorganchase/constellation/releases/download/v$CVER/$CREL.tar.xz && \
     tar xfJ $CREL.tar.xz && \
     cp $CREL/constellation-node /usr/local/bin && chmod 0755 /usr/local/bin/constellation-node && \
