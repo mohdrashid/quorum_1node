@@ -25,7 +25,7 @@ mkdir -p $DATA_DIR/{keystore,geth} &&
 cp permissioned-nodes.json $DATA_DIR/static-nodes.json &&
 cp permissioned-nodes.json $DATA_DIR/ &&
 echo $NODE_KEY > $DATA_DIR/geth/nodekey &&
-geth --datadir $DATA_DIR/ init genesis.json
+geth --datadir $DATA_DIR/ init $GENESIS_FILE
 
 echo
 echo "Constellation Public Key: $(cat keys/node.pub)"

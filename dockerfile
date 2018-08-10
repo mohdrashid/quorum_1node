@@ -60,4 +60,4 @@ EXPOSE ${CONSTELLATION_PORT}
 
 #RUN ./raft-init.sh
 
-ENTRYPOINT ["./raft-start.sh"]
+ENTRYPOINT ["./start.sh"]

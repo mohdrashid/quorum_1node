@@ -4,7 +4,6 @@ services:
     env_file: environment.env
     build: 
       context: .
-      args_file: 
       args:
         - CVER=0.3.2
         - GOREL=go1.9.3.linux-amd64.tar.gz
