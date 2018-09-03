@@ -16,8 +16,8 @@ services:
      - "8546:8546"
      - "9001:9001"
     volumes:
-     - /home/rashid/quorum_1node/data/d1:/quorum/data
-     - /home/rashid/quorum_1node/logs/l1:/quorum/logs
+     - /data/d1:/quorum/data
+     - /data/logs/l1:/quorum/logs
   quorum2:
     env_file: environment2.env
     build: 
@@ -34,8 +34,8 @@ services:
      - "8546:8548"
      - "9001:9002"
     volumes:
-     - /home/rashid/quorum_1node/data/d2:/quorum/data
-     - /home/rashid/quorum_1node/logs/l2:/quorum/logs
+     - /data/d2:/quorum/data
+     - /data/logs/l2:/quorum/logs
    quorum3:
     env_file: environment3.env
     build: 
@@ -52,5 +52,5 @@ services:
      - "8546:8550"
      - "9001:9003"
     volumes:
-     - /home/rashid/quorum_1node/data/d3:/quorum/data
-     - /home/rashid/quorum_1node/logs/l3:/quorum/logs 
+     - /data/d3:/quorum/data
+     - /data/logs/l3:/quorum/logs 
