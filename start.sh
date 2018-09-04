@@ -35,7 +35,7 @@ ls
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
 OTHER_ARGS=""
 if [[ "${UNLOCK:+isset}" == "isset" ]]; then
-    OTHER_ARGS="--unlock '$UNLOCK' --password 'passwords.txt'"
+    OTHER_ARGS="--unlock '$UNLOCK' --password passwords.txt"
 fi
 if [ "$CONSENSUS" = "raft" ]; then
   echo "Consensus algorithm: RAFT"
