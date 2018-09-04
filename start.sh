@@ -38,7 +38,7 @@ if [[ "${UNLOCK:+isset}" == "isset" ]]; then
 fi
 if [ "$CONSENSUS" = "raft" ]; then
   echo "Consensus algorithm: RAFT"
-  ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints --permissioned"
+  ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints"
   PRIVATE_CONFIG=$CONSTELLATION_DATA_DIR/tm.ipc nohup geth --datadir $DATA_DIR $ARGS $WEBSOCKET_ARGS --wsorigins "*" --rpcport $RPC_PORT --permissioned --raftport $RAFT_PORT --port $GETH_PORT $OTHER_ARGS 2>>$LOG_DIR/quorum.log
 elif [ "$CONSENSUS" = "istanbul" ]; then
   echo "Consensus algorithm: Istanbul"
