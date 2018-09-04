@@ -7,9 +7,9 @@ CONSTELLATION_DATA_DIR="$DATA_DIR/constellation"
 
 if [ $NETWORK_ID -eq 1 ]
 then
-    echo "  Quorum should not be run with a chainId of 1 (Ethereum mainnet)"
-    echo "  please set the chainId in the genensis.json to another value "
-    echo "  1337 is the recommend ChainId for Geth private clients."
+    echo "Quorum should not be run with a chainId of 1 (Ethereum mainnet)"
+    echo "please set the chainId in the genensis.json to another value "
+    echo "1337 is the recommend ChainId for Geth private clients."
 fi
 
 if [ -d "data/keystore" ]; then
@@ -33,7 +33,10 @@ echo "$(cat $DATA_DIR/geth/nodekey)"
 echo "[*] Starting Ethereum nodes"
 
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
-
+OTHER_ARGS=""
+if [ ! -v UNLOCK ]; then
+    $OTHER_ARGS ="--unlock $UNLOCK --password passwords.txt"
+fi
 if [ "$CONSENSUS" = "raft" ]; then
   echo "Consensus algorithm: RAFT"
   ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints"
