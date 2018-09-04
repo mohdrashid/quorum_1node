@@ -22,7 +22,6 @@ cd ..
 
 echo "[*] Configuring node (permissioned)"
 mkdir -p $DATA_DIR/{keystore,geth} &&
-cp passwords.txt $DATA_DIR/passwords.txt &&
 cp permissioned-nodes.json $DATA_DIR/static-nodes.json &&
 cp permissioned-nodes.json $DATA_DIR/ &&
 echo $NODE_KEY > $DATA_DIR/geth/nodekey &&
