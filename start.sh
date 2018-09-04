@@ -34,8 +34,8 @@ echo "[*] Starting Ethereum nodes"
 
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
 OTHER_ARGS=""
-if [[ ${UNLOCK+x} ]]; then
-    $OTHER_ARGS ="--unlock $UNLOCK --password passwords.txt"
+if [ -z "${UNLOCK-}" ]; then
+    OTHER_ARGS ="--unlock $UNLOCK --password passwords.txt"
 fi
 if [ "$CONSENSUS" = "raft" ]; then
   echo "Consensus algorithm: RAFT"
