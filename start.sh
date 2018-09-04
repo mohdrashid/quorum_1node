@@ -32,17 +32,17 @@ echo "$(cat $DATA_DIR/geth/nodekey)"
 
 echo "[*] Starting Ethereum nodes"
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
-OTHER_ARGS="--cache=$CACHE --maxpeers 100"
+OTHER_ARGS=""
 if [[ "${UNLOCK:+isset}" == "isset" ]]; then
     OTHER_ARGS="--unlock $UNLOCK --password passwords.txt"
 fi
 if [ "$CONSENSUS" = "raft" ]; then
   echo "Consensus algorithm: RAFT"
-  ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints"
+  ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum --emitcheckpoints --cache=$CACHE"
   PRIVATE_CONFIG=$CONSTELLATION_DATA_DIR/tm.ipc nohup geth --datadir $DATA_DIR $ARGS $WEBSOCKET_ARGS --wsorigins "*" --rpcport $RPC_PORT --permissioned --raftport $RAFT_PORT --port $GETH_PORT $OTHER_ARGS 2>>$LOG_DIR/quorum.log
 elif [ "$CONSENSUS" = "istanbul" ]; then
   echo "Consensus algorithm: Istanbul"
-  ARGS="--nodiscover --istanbul.blockperiod $ISTANBUL_BLOCKPERIOD --networkid $NETWORK_ID --syncmode full --mine --minerthreads $ISTANBUL_MINERTHREADS --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul"
+  ARGS="--nodiscover --istanbul.blockperiod $ISTANBUL_BLOCKPERIOD --networkid $NETWORK_ID --syncmode full --mine --minerthreads $ISTANBUL_MINERTHREADS --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum,istanbul --cache=$CACHE"
   PRIVATE_CONFIG=$CONSTELLATION_DATA_DIR/tm.ipc nohup geth --datadir $DATA_DIR $ARGS $WEBSOCKET_ARGS --rpcport $RPC_PORT --port $GETH_PORT $OTHER_ARGS 2>>$LOG_DIR/quorum.log
 fi
 
