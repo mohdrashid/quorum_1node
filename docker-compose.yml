@@ -18,6 +18,12 @@ services:
     volumes:
      - /data/d1:/quorum/data
      - /data/logs/l1:/quorum/logs
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
   quorum2:
     env_file: environment2.env
     build: 
@@ -36,6 +42,12 @@ services:
     volumes:
      - /data/d2:/quorum/data
      - /data/logs/l2:/quorum/logs
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
   quorum3:
     env_file: environment3.env
     build: 
@@ -53,4 +65,10 @@ services:
      - "9003:9003"
     volumes:
      - /data/d3:/quorum/data
-     - /data/logs/l3:/quorum/logs 
+     - /data/logs/l3:/quorum/logs
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s 
