@@ -32,7 +32,7 @@ echo "$(cat $DATA_DIR/geth/nodekey)"
 
 echo "[*] Starting Ethereum nodes"
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
-OTHER_ARGS=""
+OTHER_ARGS="--cache=$CACHE"
 if [[ "${UNLOCK:+isset}" == "isset" ]]; then
     OTHER_ARGS="--unlock $UNLOCK --password passwords.txt"
 fi
