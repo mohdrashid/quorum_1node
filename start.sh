@@ -34,7 +34,7 @@ echo "[*] Starting Ethereum nodes"
 
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
 OTHER_ARGS=""
-if [ ! -v UNLOCK ]; then
+if [ ! -n "$UNLOCK" ]; then
     $OTHER_ARGS ="--unlock $UNLOCK --password passwords.txt"
 fi
 if [ "$CONSENSUS" = "raft" ]; then
