@@ -20,14 +20,14 @@ else
     ./initialization.sh
 fi
 
-sleep 2
+sleep 1
 
 mkdir -p $LOG_DIR
 echo "[*] Starting Constellation nodes"
 ./constellation-start.sh
 
 echo "Waiting for constellation to start"
-sleep 3
+sleep 2
 echo "$(cat $DATA_DIR/geth/nodekey)"
 
 echo "[*] Starting Ethereum nodes"
@@ -35,7 +35,7 @@ echo "[*] Starting Ethereum nodes"
 WEBSOCKET_ARGS="--ws --wsaddr 0.0.0.0 --wsport $WS_PORT"
 OTHER_ARGS=""
 if [[ "${UNLOCK:+isset}" == "isset" ]]; then
-    OTHER_ARGS="--unlock '$UNLOCK' --password 'passwords.txt'"
+    OTHER_ARGS="--unlock '$UNLOCK' --password '$DATA_DIR/passwords.txt'"
 fi
 if [ "$CONSENSUS" = "raft" ]; then
   echo "Consensus algorithm: RAFT"
