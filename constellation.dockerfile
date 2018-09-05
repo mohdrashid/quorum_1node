@@ -16,6 +16,7 @@ RUN apt-get install -y libgmp-dev libdb-dev libleveldb-dev libsodium-dev zlib1g-
     gem install --no-ri --no-rdoc fpm
 
 # install constellation
+ARG CVER
 ARG CREL="constellation-$CVER-ubuntu1604"
 
 RUN wget -q https://github.com/jpmorganchase/constellation/releases/download/v$CVER/$CREL.tar.xz && \
