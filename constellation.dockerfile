@@ -18,6 +18,7 @@ RUN apt-get install -y libgmp-dev libdb-dev libleveldb-dev libsodium-dev zlib1g-
     gem install --no-ri --no-rdoc fpm
 
 WORKDIR /constellation
+COPY . .
 
 #Constellation
 EXPOSE ${CONSTELLATION_PORT}
