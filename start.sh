@@ -5,6 +5,10 @@ set -e
 NETWORK_ID=$(cat genesis.json | grep chainId | awk -F " " '{print $2}' | awk -F "," '{print $1}')
 CONSTELLATION_DATA_DIR="$DATA_DIR/constellation"
 
+cp permissioned-nodes.json $DATA_DIR/static-nodes.json &&
+cp permissioned-nodes.json $DATA_DIR/ &&
+echo "Constellation Public Key: $(cat keys/node.pub)"
+
 if [ $NETWORK_ID -eq 1 ]
 then
     echo "Quorum should not be run with a chainId of 1 (Ethereum mainnet)"
