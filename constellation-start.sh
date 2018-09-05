@@ -36,5 +36,4 @@ while $DOWN; do
 done
 
 echo "Constellation is UP"
-ls
 tail -f data/info.log
