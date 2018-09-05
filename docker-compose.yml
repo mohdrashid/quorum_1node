@@ -16,8 +16,8 @@ services:
     ports:
      - "9005:9001"
     volumes:
-     - /data/constellation:/constallation/data
-     - /data/logs/c1:/constallation/data/logs
+     - /data/constellation:/constellation/data
+     - /data/logs/c1:/constellation/data/logs
     restart: on-failure
 
   # #Quorum Node 2
