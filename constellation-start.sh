@@ -30,3 +30,5 @@ while $DOWN; do
         DOWN=true
     fi
 done
+
+echo "Constellation is UP"

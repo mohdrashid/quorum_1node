@@ -3,6 +3,7 @@ services:
   #Quorum Node 1
   constellation:
     env_file: environment.env
+    command: tail -F anything
     build: 
       dockerfile: constellation.dockerfile
       context: .
