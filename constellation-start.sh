@@ -17,7 +17,7 @@ else
     cd ..
 fi
 
-rm -f "$CONSTELLATION_DATA_DIR/tm.ipc"
+rm -f "data/tm.ipc"
 CMD="constellation-node --url=$CONSTELLATION_ADDRESS --port=$CONSTELLATION_PORT --workdir=data --socket=data/tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$OTHER_CONSTELLATION_NODES --tls=off"
 $CMD >> "/logs" 2>&1 &
 
