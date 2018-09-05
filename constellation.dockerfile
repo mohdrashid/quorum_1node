@@ -13,7 +13,7 @@ RUN bash -c 'if [ "$(lsb_release -sc)" == "trusty" ]; then \
 
 RUN apt-get install -y libgmp-dev libdb-dev libleveldb-dev libsodium-dev zlib1g-dev libtinfo-dev && \
     apt-get install -y ruby ruby-dev build-essential && \
-    gem install --no-ri --no-rdoc fpm
+    gem install --no-ri --no-rdoc fpm wget unzip git
 
 # install constellation
 ARG CVER
