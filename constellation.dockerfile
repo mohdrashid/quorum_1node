@@ -11,7 +11,7 @@ RUN bash -c 'if [ "$(lsb_release -sc)" == "trusty" ]; then \
                apt-get update; \
              fi'
 
-RUN apt-get install -y build-essential wget unzip git libdb-dev libleveldb-dev libsodium-dev zlib1g-dev libtinfo-dev WORKDIR
+RUN apt-get install -y build-essential wget unzip git libdb-dev libleveldb-dev libsodium-dev zlib1g-dev libtinfo-dev wrk
 
 # install constellation
 ARG CVER
