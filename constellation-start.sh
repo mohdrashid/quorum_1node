@@ -5,12 +5,15 @@ set -e
 constellation-node --version
 
 echo "Setting up Constellation keys"
+if [ ! -d "data" ]; then
+    mkdir data
+fi
+
 if [ -f "data/node.pub" ]; then
     # Will enter here if $DIRECTORY exists, even if it contains spaces
     echo "Directory exists, Skipping initialization"
 else
     echo "Initializing"
-    mkdir data
     yes ""| constellation-node --generatekeys=node
     cp "node.pub" "data/node.pub"
     cp "node.key" "data/node.key"
