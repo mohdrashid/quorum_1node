@@ -11,7 +11,7 @@ services:
         - QVER=v2.1.0
     networks: 
       internal:
-        ipv4_address: 10.0.0.1
+        ipv4_address: 172.28.0.1
     ports:
      - "21000:21000"
      - "8545:8545"
@@ -39,7 +39,7 @@ services:
         - QVER=v2.1.0
     networks: 
       internal:
-        ipv4_address: 10.0.0.2
+        ipv4_address: 172.28.0.2
     depends_on:
      - quorum
     ports:
@@ -69,7 +69,7 @@ services:
         - QVER=v2.1.0
     networks: 
       internal:
-        ipv4_address: 10.0.0.3
+        ipv4_address: 172.28.0.3
     depends_on:
      - quorum
     ports:
@@ -93,4 +93,4 @@ networks:
     driver: bridge
     ipam:
      config:
-       - subnet: 10.0.0.0/8
+       - subnet: 172.28.0.0/16
