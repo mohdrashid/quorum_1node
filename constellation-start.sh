@@ -6,6 +6,7 @@ constellation-node --version
 
 echo "Setting up Constellation keys"
 if [ ! -d "data" ]; then
+    echo "Creating directory"
     mkdir data
 fi
 
@@ -21,7 +22,7 @@ else
 fi
 
 rm -f "data/tm.ipc"
-CMD="constellation-node --url=$CONSTELLATION_ADDRESS --port=$CONSTELLATION_PORT --workdir=data --socket=data/tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$OTHER_CONSTELLATION_NODES --tls=off"
+CMD="constellation-node --url=$CONSTELLATION_ADDRESS --port=$CONSTELLATION_PORT --workdir=data --socket=tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$OTHER_CONSTELLATION_NODES --tls=off"
 $CMD >> "data/info.log" 2>&1 &
 
 DOWN=false
@@ -36,4 +37,4 @@ done
 
 echo "Constellation is UP"
 
-tail -f data/info.log
+tail -f info.log
