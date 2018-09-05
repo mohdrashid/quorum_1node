@@ -26,7 +26,7 @@ DOWN=false
 while $DOWN; do
     sleep 0.1
     DOWN=false
-    if [ ! -S "tm.ipc" ]; then
+    if [ ! -S "data/tm.ipc" ]; then
         DOWN=true
     fi
 done
