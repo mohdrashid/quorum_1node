@@ -2,18 +2,29 @@
 set -u
 set -e
 
-CONSTELLATION_DATA_DIR="$DATA_DIR/constellation"
+echo "Setting up Constellation keys"
+if [ -d "data" ]; then
+    # Will enter here if $DIRECTORY exists, even if it contains spaces
+    echo "Directory exists, Skipping initialization"
+else
+    echo "Initializing"
+    mkdir data
+    yes ""| constellation-node --generatekeys=node
+    cp "node.pub" "data/node.pub"
+    cp "node.key" "data/node.key"
+    cd ..
+fi
 
 rm -f "$CONSTELLATION_DATA_DIR/tm.ipc"
-CMD="constellation-node --url=$CONSTELLATION_ADDRESS --port=$CONSTELLATION_PORT --workdir=$CONSTELLATION_DATA_DIR --socket=tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$OTHER_CONSTELLATION_NODES --tls=off"
-$CMD >> "$LOG_DIR/constellation.log" 2>&1 &
+CMD="constellation-node --url=$CONSTELLATION_ADDRESS --port=$CONSTELLATION_PORT --workdir=data --socket=data/tm.ipc --publickeys=node.pub --privatekeys=node.key --othernodes=$OTHER_CONSTELLATION_NODES --tls=off"
+$CMD >> "/logs" 2>&1 &
 
 DOWN=false
 
 while $DOWN; do
     sleep 0.1
     DOWN=false
-    if [ ! -S "$CONSTELLATION_DATA_DIR/tm.ipc" ]; then
+    if [ ! -S "tm.ipc" ]; then
         DOWN=true
     fi
 done
