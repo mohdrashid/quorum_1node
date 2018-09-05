@@ -1,8 +1,8 @@
 version: '3'
 services:
-  #Quorum Node 1
+  #Constellation Node 1
   constellation:
-    env_file: environment.env
+    env_file: env/constellation/node.env
     build: 
       dockerfile: constellation/dockerfile
       context: .
@@ -15,7 +15,6 @@ services:
      - "9005:9001"
     volumes:
      - /data/constellation:/constellation/data
-     - /data/logs/c1:/constellation/data/logs
     restart: on-failure
 
   # #Quorum Node 2
