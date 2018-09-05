@@ -11,7 +11,7 @@ services:
         - QVER=v2.1.0
     networks: 
       internal:
-        ipv4_address: 172.28.0.1
+        ipv4_address: 172.28.0.11
     ports:
      - "21000:21000"
      - "8545:8545"
@@ -21,6 +21,7 @@ services:
     volumes:
      - /data/d1:/quorum/data
      - /data/logs/l1:/quorum/logs
+    restart: on-failure
     deploy:
       restart_policy:
         condition: on-failure
@@ -39,7 +40,7 @@ services:
         - QVER=v2.1.0
     networks: 
       internal:
-        ipv4_address: 172.28.0.2
+        ipv4_address: 172.28.0.12
     depends_on:
      - quorum
     ports:
@@ -51,6 +52,7 @@ services:
     volumes:
      - /data/d2:/quorum/data
      - /data/logs/l2:/quorum/logs
+    restart: on-failure
     deploy:
       restart_policy:
         condition: on-failure
@@ -69,7 +71,7 @@ services:
         - QVER=v2.1.0
     networks: 
       internal:
-        ipv4_address: 172.28.0.3
+        ipv4_address: 172.28.0.13
     depends_on:
      - quorum
     ports:
@@ -81,6 +83,7 @@ services:
     volumes:
      - /data/d3:/quorum/data
      - /data/logs/l3:/quorum/logs
+    restart: on-failure
     deploy:
       restart_policy:
         condition: on-failure
