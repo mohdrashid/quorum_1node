@@ -2,6 +2,8 @@
 set -u
 set -e
 
+constellation-node --version
+
 echo "Setting up Constellation keys"
 if [ -d "data" ]; then
     # Will enter here if $DIRECTORY exists, even if it contains spaces

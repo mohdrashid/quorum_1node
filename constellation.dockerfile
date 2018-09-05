@@ -22,6 +22,4 @@ WORKDIR /constellation
 #Constellation
 EXPOSE ${CONSTELLATION_PORT}
 
-RUN constellation-node --version
-
 ENTRYPOINT ["./constellation-start.sh"]
