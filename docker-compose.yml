@@ -4,7 +4,7 @@ services:
   constellation:
     env_file: environment.env
     build: 
-      dockerfile: constellation.dockerfile
+      dockerfile: constellation/dockerfile
       context: .
       args:
         - CVER=0.3.2
