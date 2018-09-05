@@ -5,7 +5,7 @@ set -e
 constellation-node --version
 
 echo "Setting up Constellation keys"
-if [ -d "data" ]; then
+if [ -f "data/node.pub" ]; then
     # Will enter here if $DIRECTORY exists, even if it contains spaces
     echo "Directory exists, Skipping initialization"
 else
