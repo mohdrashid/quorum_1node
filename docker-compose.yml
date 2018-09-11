@@ -1,6 +1,5 @@
 version: '3'
 services:
-  #Quorum Node 1
   quorum:
     env_file: environment.env
     build: 
@@ -9,18 +8,18 @@ services:
         - CVER=0.3.2
         - GOREL=go1.9.3.linux-amd64.tar.gz
         - QVER=v2.1.0
-    networks: 
-      internal:
-        ipv4_address: 172.28.0.11
+    network_mode: "host"
+    # Host Port - Target Port
     ports:
      - "21000:21000"
      - "8545:8545"
      - "50401:50401"
      - "8546:8546"
      - "9001:9001"
+    #Host Directory - Target Directory
     volumes:
-     - /data/d1:/quorum/data
-     - /data/logs/l1:/quorum/logs
+     - /data:/quorum/data
+     - /data/logs:/quorum/logs
     restart: on-failure
     deploy:
       restart_policy:
@@ -28,72 +27,3 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
-
-  #Quorum Node 2
-  quorum2:
-    env_file: environment2.env
-    build: 
-      context: .
-      args:
-        - CVER=0.3.2
-        - GOREL=go1.9.3.linux-amd64.tar.gz
-        - QVER=v2.1.0
-    networks: 
-      internal:
-        ipv4_address: 172.28.0.12
-    depends_on:
-     - quorum
-    ports:
-     - "21001:21000"
-     - "8547:8545"
-     - "50402:50401"
-     - "8548:8546"
-     - "9002:9001"
-    volumes:
-     - /data/d2:/quorum/data
-     - /data/logs/l2:/quorum/logs
-    restart: on-failure
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-
-  #Quorum Node 3
-  quorum3:
-    env_file: environment3.env
-    build: 
-      context: .
-      args:
-        - CVER=0.3.2
-        - GOREL=go1.9.3.linux-amd64.tar.gz
-        - QVER=v2.1.0
-    networks: 
-      internal:
-        ipv4_address: 172.28.0.13
-    depends_on:
-     - quorum
-    ports:
-     - "21002:21000"
-     - "8549:8545"
-     - "50403:50401"
-     - "8550:8546"
-     - "9003:9001"
-    volumes:
-     - /data/d3:/quorum/data
-     - /data/logs/l3:/quorum/logs
-    restart: on-failure
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s 
-
-networks: 
-  internal:
-    driver: bridge
-    ipam:
-     config:
-       - subnet: 172.28.0.0/16
