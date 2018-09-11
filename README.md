@@ -3,8 +3,8 @@
 Currently, raft is the only consensus mechanism supported in this docker version. Istanbul consensus will be added shortly.
 
 ## 1. Clone the repository
-Clone the repository by typing `git clone https://github.com/mohdrashid/quorum_1node.git` in the terminal.
-After that go the downloaded repository by typing `cd quorum_1node`
+Clone the repository by typing `git clone https://github.com/mohdrashid/docker_quorum.git` in the terminal.
+After that go the downloaded repository by typing `cd docker_quorum`
 
 ## 2. Edit the variables
 If required you can edit the ports or other informations by changing the corresponding value in environment.env file
@@ -23,3 +23,6 @@ You can easily interact with the node by typing `geth attach PATH_TO_DATA/dd1/ge
 
 # Regarding your keys
 Your constellation public ID can be obtained from data directory in constellation/node.pub file. This will be used by others to send you private transaction. Ethereum accounts can be added from geth using standard geth commands.
+
+# 3 Node setup
+To use the 3 Node setup in docker switch the branch to 3nodes
