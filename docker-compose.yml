@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   #Quorum Node 1
   quorum:
@@ -9,25 +9,18 @@ services:
         - CVER=0.3.2
         - GOREL=go1.9.3.linux-amd64.tar.gz
         - QVER=v2.1.0
-    networks: 
-      internal:
-        ipv4_address: 172.28.0.11
+    network_mode: "host"
     ports:
      - "21000:21000"
      - "8545:8545"
      - "50401:50401"
      - "8546:8546"
      - "9001:9001"
+    restart: on-failure
     volumes:
      - /data/d1:/quorum/data
      - /data/logs/l1:/quorum/logs
-    restart: on-failure
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
+    mem_limit: 4gb
 
   #Quorum Node 2
   quorum2:
@@ -38,27 +31,18 @@ services:
         - CVER=0.3.2
         - GOREL=go1.9.3.linux-amd64.tar.gz
         - QVER=v2.1.0
-    networks: 
-      internal:
-        ipv4_address: 172.28.0.12
-    depends_on:
-     - quorum
+    network_mode: "host"
     ports:
-     - "21001:21000"
-     - "8547:8545"
-     - "50402:50401"
-     - "8548:8546"
-     - "9002:9001"
+     - "21001:21001"
+     - "8547:8547"
+     - "50402:50402"
+     - "8548:8548"
+     - "9002:9002"
     volumes:
      - /data/d2:/quorum/data
      - /data/logs/l2:/quorum/logs
     restart: on-failure
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
+    mem_limit: 2gb
 
   #Quorum Node 3
   quorum3:
@@ -69,31 +53,15 @@ services:
         - CVER=0.3.2
         - GOREL=go1.9.3.linux-amd64.tar.gz
         - QVER=v2.1.0
-    networks: 
-      internal:
-        ipv4_address: 172.28.0.13
-    depends_on:
-     - quorum
+    network_mode: "host"
     ports:
-     - "21002:21000"
-     - "8549:8545"
-     - "50403:50401"
-     - "8550:8546"
-     - "9003:9001"
+     - "21002:21002"
+     - "8549:8549"
+     - "50403:50403"
+     - "8550:8550"
+     - "9003:9003"
     volumes:
      - /data/d3:/quorum/data
      - /data/logs/l3:/quorum/logs
     restart: on-failure
-    deploy:
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s 
-
-networks: 
-  internal:
-    driver: bridge
-    ipam:
-     config:
-       - subnet: 172.28.0.0/16
+    mem_limit: 1gb
